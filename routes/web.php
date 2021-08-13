@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::post('/', [IssueFormController::class, 'IssueForm']);
+
+Route::get('/confirmation', function () {
+    return view('confirmation');
+})->name('confirmation');

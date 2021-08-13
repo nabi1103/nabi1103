@@ -31,6 +31,6 @@ class IssueFormController extends Controller
         Issue::create($input->all());
 
         //
-        return back();
+        return redirect()->route('confirmation');
     }
 }
