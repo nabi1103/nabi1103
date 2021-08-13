@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Issue;
 use Illuminate\Http\Request;
 
 class IssueFormController extends Controller
@@ -19,13 +20,14 @@ class IssueFormController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'subject' => 'required',
-            'message' => 'required'
+            'phone' => 'required|regex:/^[0-9]*$/|min:10',
+            'problem-description' => 'required',
+            'steps-taken' => 'required',
+            'expectation' => 'required',
         ]);
 
         //  Store data in database
-        Contact::create($request->all());
+        Issue::create($request->all());
 
         //
         return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
