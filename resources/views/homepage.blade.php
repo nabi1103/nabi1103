@@ -14,7 +14,7 @@
 
 <body class="antialiased">
 <div class='container'>
-    <form id='main-form' autocomplete="off">
+    <form id='main-form' autocomplete="off" method="POST" action="/">
         {{csrf_field()}}
         <div class="form-group">
             <label><h3>Name</h3></label>
@@ -35,7 +35,7 @@
 
         <div class="form-group">
             <label><h3>Urgency</h3></label>
-            <select id="cars" name="urgency" form="main-form" onfocus="this.value=1">
+            <select id="urgency-level" name="urgency" form="main-form" onfocus="this.value=1">
                 <option value="1">1 (Not very important)</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

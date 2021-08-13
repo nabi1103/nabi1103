@@ -12,24 +12,25 @@ class IssueFormController extends Controller
         return view('contact');
     }
 
-    // Store Contact Form data
-    public function IssueForm(Request $request)
+    // Store Issue data
+    public function IssueForm(Request $input)
     {
 
         // Form validation
-        $this->validate($request, [
+        $this->validate($input, [
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|regex:/^[0-9]*$/|min:10',
+            'urgency' => 'required',
             'problem-description' => 'required',
             'steps-taken' => 'required',
             'expectation' => 'required',
         ]);
 
         //  Store data in database
-        Issue::create($request->all());
+        Issue::create($input->all());
 
         //
-        return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
+        return back();
     }
 }
